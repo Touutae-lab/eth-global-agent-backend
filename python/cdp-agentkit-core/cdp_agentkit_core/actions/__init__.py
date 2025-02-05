@@ -65,4 +65,6 @@ __all__ = [
     "SuperfluidCreateFlowAction",
     "SuperfluidUpdateFlowAction",
     "SuperfluidDeleteFlowAction",
+    "EstimateNFTFightPowerAction",
+    "GetNFTPriceAction",
 ]
