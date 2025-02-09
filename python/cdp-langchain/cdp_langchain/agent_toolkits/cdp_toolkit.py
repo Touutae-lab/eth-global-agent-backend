@@ -51,9 +51,25 @@ class CdpToolkit(BaseToolkit):
 
         .. code-block:: none
 
-            simulate_fight
+            get_wallet_details
+            get_balance
+            get_balance_nft
+            request_faucet_funds
+            transfer
+            transfer_nft
+            trade
+            deploy_token
+            mint_nft
+            deploy_nft
+            deploy_contract
+            register_basename
+            wow_create_token
+            wow_buy_token
+            wow_sell_token
+            wrap_eth
+            simulate_battle
             get_nft_price
-            powerestimation
+            estimate_fighting_pow
     Use within an agent:
         .. code-block:: python
 

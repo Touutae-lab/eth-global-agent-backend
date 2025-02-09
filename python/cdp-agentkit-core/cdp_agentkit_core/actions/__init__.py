@@ -26,7 +26,7 @@ from cdp_agentkit_core.actions.wow.sell_token import WowSellTokenAction
 from cdp_agentkit_core.actions.wrap_eth import WrapEthAction
 from cdp_agentkit_core.actions.rpg.estimate_fighting_pow import EstimateNFTFightPowerAction
 from cdp_agentkit_core.actions.rpg.get_nft_price import GetNFTPriceAction
-from simulate_battle import SimulationBattleAction
+from cdp_agentkit_core.actions.rpg.simulate_battle import SimulationBattleAction
 
 
 # WARNING: All new CdpAction subclasses must be imported above, otherwise they will not be discovered
