@@ -1,7 +1,8 @@
 import random
 from collections.abc import Callable
 from pydantic import BaseModel, Field
-from cdp_agentkit_core.actions.cdp_action import CdpAction
+
+from cdp_agentkit_core.actions import CdpAction
 
 SIMULATION_BATTLE_PROMPT = """
 This tool simulates a battle between two NFTs based on their price or randomly generated stats.

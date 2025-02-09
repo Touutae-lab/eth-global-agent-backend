@@ -2,7 +2,7 @@ from collections.abc import Callable
 from pydantic import BaseModel, Field
 import requests
 
-from cdp_agentkit_core.actions.cdp_action import CdpAction
+from cdp_agentkit_core.actions import CdpAction
 
 GET_NFT_PRICE_PROMPT = """
 This tool retrieves the current market price of an NFT on the Ethereum blockchain, denominated in HUSD.

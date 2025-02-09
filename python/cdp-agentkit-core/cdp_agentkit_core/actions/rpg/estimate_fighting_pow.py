@@ -1,7 +1,7 @@
 from collections.abc import Callable
 from pydantic import BaseModel, Field
 
-from cdp_agentkit_core.actions.cdp_action import CdpAction
+from cdp_agentkit_core.actions import CdpAction
 
 ESTIMATE_NFT_FIGHTING_POWER_PROMPT = """
 This tool estimates the fighting power attributes of an NFT based on its market price (USD).
