@@ -489,7 +489,7 @@ python-versions = "^3.10"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\" or python_version >= \"3.12\""
 files = []
-develop = false
+develop = true
 
 [package.dependencies]
 cdp-agentkit-core = "^0.0.11"
@@ -3741,4 +3741,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "25d7578a688c23f2f5e6d2030e90f42670b5b547e8fdd4ef1ae258fe35ec57f5"
+content-hash = "36c086c1cf74da2155a9bbca617ef69c2d6b2644b089d63c4337f2518e8ebacb"

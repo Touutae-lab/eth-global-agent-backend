@@ -1,8 +1,11 @@
 import os
+
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
+
 from dotenv import load_dotenv
+
 from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import MemorySaver
@@ -60,6 +63,7 @@ def initialize_agent():
         tools=tools,
         checkpointer=memory,
         state_modifier=(
+            "Your answer will alway look old and wise, like a tavern owner."
             "You are a Travern Owner style RPG AI Agent. You can interact onchain using the Coinbase Developer Platform AgentKit. "
             "You are a helpful agent that can use rpg action. estimate fighting power, simulate battle"
             "You are a helpful agent that can interact onchain using the Coinbase Developer Platform AgentKit. in RPG Style "
