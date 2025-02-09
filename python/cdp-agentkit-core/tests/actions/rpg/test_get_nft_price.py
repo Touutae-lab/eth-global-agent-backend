@@ -8,20 +8,20 @@ from cdp_agentkit_core.actions.rpg.get_nft_price import GetNFTPriceInput, get_nf
 MOCK_ID = "0xdF574c24545E5FfEcb9a659c229253D4111d87e1"
 
 
-    
 def test_get_nft_price_input_model_valid():
     """Test GetNftPriceInput accepts valid parameters."""
     valid_input = GetNFTPriceInput(
         nft_id=MOCK_ID,
     )
     assert valid_input.nft_id == MOCK_ID
-    
+
 
 def test_get_nft_price_input_model_missing_params():
     """Test GetNftPriceInput raises error when params are missing."""
     with pytest.raises(ValueError):
         GetNFTPriceInput()
-        
+
+
 def test_get_nft_price_success():
     """Test successful NFT price fetch with valid parameters."""
     mock_response = {
@@ -31,7 +31,7 @@ def test_get_nft_price_success():
                 "symbol": "HUSD",
                 "price": 0.02678196,
                 "timestamp": 1738767037,
-                "confidence": 0.99
+                "confidence": 0.99,
             }
         }
     }

@@ -31,7 +31,8 @@ The battle continues until one NFT’s **HP reaches 0**.
 - **Winner** – The NFT that survives.
 """
 
-class BattleArenaInput(BaseModel):
+
+class SimulationBattleInput(BaseModel):
     """
     Schema for simulating an NFT battle.
 
@@ -46,7 +47,7 @@ class BattleArenaInput(BaseModel):
 
 def generate_nft_stats(nft_price: float) -> dict:
     """Generate stats based on NFT price with a bit of randomness."""
-    
+
     base_attack = 50
     base_defense = 40
     base_speed = 30
@@ -61,13 +62,13 @@ def generate_nft_stats(nft_price: float) -> dict:
         "Attack": round(attack, 2),
         "Defense": round(defense, 2),
         "Speed": round(speed, 2),
-        "HP": round(hp, 2)
+        "HP": round(hp, 2),
     }
 
 
-def battle_arena(nft1_price: float, nft2_price: float) -> dict:
+def simulate_battle(nft1_price: float, nft2_price: float) -> dict:
     """Simulate an NFT battle and return the winner along with a battle log."""
-    
+
     nft1 = generate_nft_stats(nft1_price)
     nft2 = generate_nft_stats(nft2_price)
 
@@ -79,7 +80,9 @@ def battle_arena(nft1_price: float, nft2_price: float) -> dict:
     while nft1["HP"] > 0 and nft2["HP"] > 0:
         attacker, defender = (nft1, nft2) if turn % 2 != 0 else (nft2, nft1)
 
-        battle_log.append(f"\n🎭 **Turn {turn}:** {('NFT 1' if turn % 2 != 0 else 'NFT 2')} attacks!")
+        battle_log.append(
+            f"\n🎭 **Turn {turn}:** {('NFT 1' if turn % 2 != 0 else 'NFT 2')} attacks!"
+        )
 
         # RNG for special battle events
         event_chance = random.randint(1, 100)
@@ -95,14 +98,16 @@ def battle_arena(nft1_price: float, nft2_price: float) -> dict:
 
         # Calculate damage
         damage = max(1, attacker["Attack"] - defender["Defense"])
-        
+
         # Critical hit chance
         if random.randint(1, 10) == 1:  # 10% chance
             damage *= 2
             battle_log.append("💥 **CRITICAL HIT!** Damage is doubled!")
 
         # Dodge chance
-        if defender["Speed"] > attacker["Speed"] and random.randint(1, 100) < 15:  # 15% dodge chance
+        if (
+            defender["Speed"] > attacker["Speed"] and random.randint(1, 100) < 15
+        ):  # 15% dodge chance
             battle_log.append("🌀 The defender **dodges the attack** effortlessly!")
         else:
             defender["HP"] -= damage
@@ -114,21 +119,18 @@ def battle_arena(nft1_price: float, nft2_price: float) -> dict:
             battle_log.append(f"🏆 **NFT {('1' if turn % 2 != 0 else '2')} wins the battle!**")
             return {
                 "battle_log": "\n".join(battle_log),
-                "winner": "NFT 1" if turn % 2 != 0 else "NFT 2"
+                "winner": "NFT 1" if turn % 2 != 0 else "NFT 2",
             }
 
         turn += 1
 
-    return {
-        "battle_log": "\n".join(battle_log),
-        "winner": "Draw (Unexpected outcome)"
-    }
+    return {"battle_log": "\n".join(battle_log), "winner": "Draw (Unexpected outcome)"}
 
 
-class BattleArenaAction(CdpAction):
+class SimulationBattleAction(CdpAction):
     """Action to simulate an NFT battle with dynamic combat events."""
 
     name: str = "battle_arena"
     description: str = BATTLE_ARENA_PROMPT
-    args_schema: type[BaseModel] | None = BattleArenaInput
-    func: Callable[..., dict] = battle_arena
+    args_schema: type[BaseModel] | None = SimulationBattleInput
+    func: Callable[..., dict] = simulate_battle

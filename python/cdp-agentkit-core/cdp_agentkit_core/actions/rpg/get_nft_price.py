@@ -17,6 +17,7 @@ Get the current market price of an NFT on the Ethereum blockchain, denominated i
 This function queries the Coins.Llama.fi API for real-time NFT price data.
 """
 
+
 class GetNFTPriceInput(BaseModel):
     """
     Schema for retrieving NFT price.

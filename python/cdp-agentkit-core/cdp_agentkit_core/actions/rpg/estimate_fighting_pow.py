@@ -24,6 +24,7 @@ Estimate the fighting power attributes of an NFT based on its market price (USD)
     This function provides a **game-like evaluation** of NFT fighting power.
 """
 
+
 class EstimateNFTFightPowerInput(BaseModel):
     """
     Schema for estimating NFT fighting power.
