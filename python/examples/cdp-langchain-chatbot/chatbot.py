@@ -15,6 +15,8 @@ from langgraph.prebuilt import create_react_agent
 from cdp_langchain.agent_toolkits import CdpToolkit
 from cdp_langchain.utils import CdpAgentkitWrapper
 
+from fastapi.middleware.cors import CORSMiddleware
+
 # Load environment variables
 load_dotenv()
 
@@ -24,6 +26,13 @@ wallet_data_file = "wallet_data.txt"
 # Initialize FastAPI
 app = FastAPI(title="RPG AI Agent API", description="Interact with the RPG AI Agent via API", version="1.0")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins, change this to specific domains if needed
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 class ChatRequest(BaseModel):
     """Schema for chat messages."""

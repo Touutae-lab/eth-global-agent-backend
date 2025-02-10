@@ -10,6 +10,8 @@ package-mode = false
 python = "^3.10"
 python-dotenv = "^1.0.1"
 cdp-langchain = { path = "../../cdp-langchain", develop = true }
+uvicorn = "^0.34.0"
+fastapi = "^0.115.8"
 
 [build-system]
 requires = ["poetry-core"]
